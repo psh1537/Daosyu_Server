@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Profile">
+  <select id="selectOne" resultType="int">
+    select user_name from profile where profile_id = #{profile_id}
+  </select>
+  
+  <insert id="insert" parameterType="Profile">
+  	insert into profile(user_picture, user_id, user_pwd, user_name, user_region, user_gender, user_hobby, user_intro)
+  	values(#{user_picture}, #{user_id}, #{user_pwd}, #{user_name}, #{user_region}, #{user_gender}, #{user_hobby}, #{user_intro})
+  </insert>
+  
+  <update id="update" parameterType="int">
+  	update profile set use_picture=#{user_picture}, user_region=#{user_region} where profile_id=#{profile_id}
+  </update>
+  
+  <delete id="delete" parameterType="int">
+  	delete from profile where profile_id = #{profile_id}
+  </delete>
+</mapper>
